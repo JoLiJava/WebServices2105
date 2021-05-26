@@ -16,7 +16,9 @@ public class Main {
 
             var inputFromClient = new BufferedReader(new InputStreamReader((client.getInputStream())));
 
-            System.out.println(inputFromClient.readLine());
+            while (true) {
+                System.out.println(inputFromClient.readLine());
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
