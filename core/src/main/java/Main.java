@@ -16,8 +16,10 @@ public class Main {
 
             var inputFromClient = new BufferedReader(new InputStreamReader((client.getInputStream())));
 
-            while (true) {
-                System.out.println(inputFromClient.readLine());
+            String input = "";
+            while (input != null) {
+                input = inputFromClient.readLine();
+                System.out.println(input);
             }
 
         } catch (IOException e) {
