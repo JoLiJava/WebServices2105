@@ -11,13 +11,18 @@ public class Main {
         // 178.174.162.51
 
         try (ServerSocket socket = new ServerSocket(5050)) {
-            Socket client = socket.accept();
-            System.out.println(client.getInetAddress());
 
-            var inputFromClient = new BufferedReader(new InputStreamReader((client.getInputStream())));
+            while (true) {
+                Socket client = socket.accept();
+                System.out.println(client.getInetAddress());
 
-            inputFromClient.lines().forEach(System.out::println);
+                var inputFromClient = new BufferedReader(new InputStreamReader((client.getInputStream())));
 
+                inputFromClient.lines().forEach(System.out::println);
+
+                inputFromClient.close();
+                client.close();
+            }
 //            String input = "";
 //            while (input != null) {
 //                input = inputFromClient.readLine();
