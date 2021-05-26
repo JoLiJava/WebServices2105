@@ -16,11 +16,13 @@ public class Main {
 
             var inputFromClient = new BufferedReader(new InputStreamReader((client.getInputStream())));
 
-            String input = "";
-            while (input != null) {
-                input = inputFromClient.readLine();
-                System.out.println(input);
-            }
+            inputFromClient.lines().forEach(System.out::println);
+
+//            String input = "";
+//            while (input != null) {
+//                input = inputFromClient.readLine();
+//                System.out.println(input);
+//            }
 
         } catch (IOException e) {
             e.printStackTrace();
