@@ -4,14 +4,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Client {                                                   // KLIENT
+public class Client {                                                   // CLIENT
 
-    public static void main(String[] args) {    // 178.174.162.51 |
-        byte[] bytes = System.lineSeparator().getBytes(); // localhost - 127.0.0.1
-        for (byte b : bytes) {
-            System.out.println(b);
-        }
-
+    public static void main(String[] args) {
         try {
             Socket clientSocket = new Socket("localhost", 5050);      // växel
 
