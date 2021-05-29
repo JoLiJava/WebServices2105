@@ -7,7 +7,7 @@ import java.net.Socket;
 public class Client {                                                   // KLIENT
 
     public static void main(String[] args) {    // 178.174.162.51 |
-        var bytes = System.lineSeparator().getBytes(); // localhost - 127.0.0.1
+        byte[] bytes = System.lineSeparator().getBytes(); // localhost - 127.0.0.1
         for (byte b : bytes) {
             System.out.println(b);
         }
