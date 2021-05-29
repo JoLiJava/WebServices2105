@@ -21,7 +21,7 @@ public class Main {                                                     // SERVE
 
                 while (true) {
                     var line = inputFromClient.readLine();
-                    if (line.isEmpty()) {
+                    if (line == null || line.isEmpty()) {
                         break;
                     }
                     System.out.println(line);
