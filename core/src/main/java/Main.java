@@ -4,18 +4,25 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Main {                                                     // SERVER
+public class Main {                                                     //SERVER
+
+    //Skriv en server som sparar inkommande information
+    //och sen returnerar all sparad information som svar.
+    public static List<String> billboard = new ArrayList<>();
+
 
     public static void main(String[] args) {
 
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        try (ServerSocket serverSocket = new ServerSocket(5050)) {  // växel
+        try (ServerSocket serverSocket = new ServerSocket(5050)) {  //växel
             while (true) {
-                Socket clientSocket = serverSocket.accept();        // anslutning
+                Socket clientSocket = serverSocket.accept();        //anslutning
                 //Starta tråd
                 //Thread thread = new Thread(() -> handleConnection(clientSocket));
                 //thread.start();
@@ -40,13 +47,19 @@ public class Main {                                                     // SERVE
                 if (line == null || line.isEmpty()) {
                     break;
                 }
+                billboard.add(line);
                 System.out.println(line);
             }
 
             var outputToClient
                     = new PrintWriter(clientSocket.getOutputStream());
-            outputToClient.print(
-                    "HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\n\r\n");
+            //outputToClient.print(
+                    //"HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\n\r\n");
+
+            for (String line : billboard) {
+                outputToClient.print(line + "\r\n");
+            }
+            outputToClient.println("\r\n");
             outputToClient.flush();
             outputToClient.close();
             inputFromClient.close();

@@ -4,11 +4,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Client {                                                   // CLIENT
+public class Client {                                                   //CLIENT
 
     public static void main(String[] args) {
         try {
-            Socket clientSocket = new Socket("localhost", 5050);      // växel
+            Socket clientSocket = new Socket("localhost", 5050);      //växel
 
             var output = new PrintWriter(clientSocket.getOutputStream());
             output.print("Hello from client\r\n\r\n");
